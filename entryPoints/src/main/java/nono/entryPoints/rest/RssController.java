@@ -39,6 +39,6 @@ public class RssController {
 	 */
 	public ChannelDTO convertToDTO(Channel channel) {
 		return new ChannelDTO(channel.getNodeId(), channel.getDescription(), channel.getRss(), channel.getClassCode(),
-				channel.isLeaf(), channel.getParentId());
+				channel.isLeaf(), channel.getParentId() == null ? null : this.convertToDTO(channel.getParentId()));
 	}
 }

@@ -17,7 +17,7 @@ public class Channel {
 
 	private boolean leaf;
 
-	private int parentId;
+	private Channel parentId;
 
 	private String userId;
 

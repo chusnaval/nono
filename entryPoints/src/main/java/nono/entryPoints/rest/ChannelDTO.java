@@ -17,6 +17,6 @@ public class ChannelDTO {
 
 	private boolean leaf;
 
-	private int parentId;
+	private ChannelDTO parentId;
 
 }

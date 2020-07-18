@@ -34,7 +34,7 @@ public class ChannelsDatabaseProvider implements GetAllChannels {
 		EntityManager em = persistenceConfig.getFactory().createEntityManager();
 		List<Channel> result = new ArrayList<>();
 		try {
-			Query query = em.createQuery("SELECT c FROM " + ChannelJPAEntity.class + " c");
+			Query query = em.createQuery("SELECT c FROM " + ChannelJPAEntity.class.getSimpleName() + " c");
 			List<ChannelJPAEntity> list = query.getResultList();
 			result = list.stream().map(ChannelJPAEntity::convertToBean).collect(Collectors.toList());
 		} catch (Exception e) {
