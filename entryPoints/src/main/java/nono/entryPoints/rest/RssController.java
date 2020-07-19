@@ -14,7 +14,7 @@ import nono.uses.channel.GetAllChannelsUseCase;
 
 @Slf4j
 @AllArgsConstructor
-@Path
+@Path(restful = true)
 public class RssController {
 
 	public RssController() {

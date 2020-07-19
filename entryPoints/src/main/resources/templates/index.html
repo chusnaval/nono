@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+ <head>
 <link rel="icon" href="data:;base64,=">
 <meta charset="UTF-8">
 <title>Nono</title>
 </head>
 <body>
 
-	test
+	The app is working.
 
+	<input type="button" id="button">
+	
 	<hr />
-
+	<div id="divResult"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$("#button").click(function(){
+	  $.get("/rss/channel/", function(data, status){
+		  $("#divResult").html("Data: " +  JSON.stringify(data) + "\nStatus: " + status);
+	  });
+	}); 
+</script>
 </body>
 </html>
