@@ -8,7 +8,7 @@ import nono.uses.UseCase;
 
 @AllArgsConstructor
 @UseCase("GetAllChannelsUseCase")
-public class GetAllChannelsUseCase implements CoreUseCase {
+public class GetAllChannelsUseCase implements CoreUseCase<Channel> {
 
 	/**
 	 * Default constructor

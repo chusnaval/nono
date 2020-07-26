@@ -23,7 +23,7 @@ public class UseCaseLoader implements BladeLoader {
 	/**
 	 * Keeps all use case registered
 	 */
-	private List<Class<CoreUseCase>> registeredUsesCases = new ArrayList<>();
+	private List<Class<CoreUseCase<?>>> registeredUsesCases = new ArrayList<>();
 
 	@Override
 	public void preLoad(Blade blade) {
@@ -53,7 +53,7 @@ public class UseCaseLoader implements BladeLoader {
 	private void parseAndCreateUseCase(Class<?> clazz, Blade blade) {
 		if (clazz.getAnnotationsByType(UseCase.class).length > 0) {
 			blade.register(clazz);
-			registeredUsesCases.add((Class<CoreUseCase>) clazz);
+			registeredUsesCases.add((Class<CoreUseCase<?>>) clazz);
 		}
 
 		if (null != clazz.getAnnotation(Factory.class) && clazz.getMethods().length > 0) {
@@ -62,7 +62,7 @@ public class UseCaseLoader implements BladeLoader {
 				try {
 					blade.ioc().addBean(n.getAnnotation(Bean.class).value(), n.invoke(config));
 				} catch (Exception e) {
-					e.printStackTrace();
+					log.error("Creating use case: " + clazz.getCanonicalName(), e);
 				}
 			});
 		}
